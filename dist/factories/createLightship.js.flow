@@ -2,7 +2,6 @@
 
 import express from 'express';
 import serializeError from 'serialize-error';
-import Logger from '../Logger';
 import type {
   ShutdownHandlerType,
   LightshipConfigurationType,
@@ -15,9 +14,7 @@ import {
   SERVER_IS_SHUTTING_DOWN
 } from '../states';
 
-const log = Logger.child({
-  namespace: 'factories/createLightship'
-});
+const log = console;
 
 const defaultConfiguration = {
   port: 9000,

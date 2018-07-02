@@ -9,8 +9,6 @@ var _express = _interopRequireDefault(require("express"));
 
 var _serializeError = _interopRequireDefault(require("serialize-error"));
 
-var _Logger = _interopRequireDefault(require("../Logger"));
-
 var _states = require("../states");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -21,10 +19,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-const log = _Logger.default.child({
-  namespace: 'factories/createLightship'
-});
-
+const log = console;
 const defaultConfiguration = {
   port: 9000,
   signals: ['SIGTERM']

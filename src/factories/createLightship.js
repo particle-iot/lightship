@@ -2,7 +2,6 @@
 
 import express from 'express';
 import serializeError from 'serialize-error';
-import Logger from '../Logger';
 import type {
   ShutdownHandlerType,
   LightshipConfigurationType,
@@ -15,9 +14,7 @@ import {
   SERVER_IS_SHUTTING_DOWN
 } from '../states';
 
-const log = Logger.child({
-  namespace: 'factories/createLightship'
-});
+const log = console;
 
 const defaultConfiguration = {
   port: 9000,
@@ -115,7 +112,7 @@ export default (userConfiguration?: LightshipConfigurationType): LightshipType =
       }
     }
 
-    log.debug('all shutdown handlers have run to completion; proceeding to terminate the Node.js process');
+    log.info('all shutdown handlers have run to completion; proceeding to terminate the Node.js process');
 
     server.close();
 
@@ -125,7 +122,7 @@ export default (userConfiguration?: LightshipConfigurationType): LightshipType =
 
   for (const signal of configuration.signals) {
     process.on(signal, () => {
-      log.debug({
+      log.info({
         signal
       }, 'received a shutdown signal');
 
