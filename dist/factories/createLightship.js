@@ -104,7 +104,7 @@ var _default = userConfiguration => {
         }
       }
 
-      log.debug('all shutdown handlers have run to completion; proceeding to terminate the Node.js process');
+      log.info('all shutdown handlers have run to completion; proceeding to terminate the Node.js process');
       server.close(); // eslint-disable-next-line no-process-exit
 
       process.exit();
@@ -117,7 +117,7 @@ var _default = userConfiguration => {
 
   for (const signal of configuration.signals) {
     process.on(signal, () => {
-      log.debug({
+      log.info({
         signal
       }, 'received a shutdown signal');
       shutdown();
